@@ -1,0 +1,92 @@
+.hamburger-menu {
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid #333;
+    padding: 1px;
+    border-radius: 5px;
+    z-index: 6;
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);*/
+}
+.hamburger-menu:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+.ham-bar1, .ham-bar2, .ham-bar3 {
+    position: relative;
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+    z-index: 6;
+}
+.change .ham-bar1 {
+    background-color: lightslategray;
+    transform: translate(0, 11px) rotate(-45deg);
+}
+.change .ham-bar2 {
+    opacity: 0;
+}
+.change .ham-bar3 {
+    /*z-index: 6;*/
+    background-color: lightslategray;
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.arrow-menu {
+    display: inline-block;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+    border: 2px solid #333;
+    padding: 1px;
+    width: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 148px;
+    right: 20px;
+    z-index: 6;
+}
+.arrow-menu i {
+    margin-left: 4.2px;
+    margin-top: 1px;
+}
+.arrow-menu:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+.arrow-bar1 {
+    position: relative;
+    width: 20px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    /*padding-right: 10px;*/
+    transition: 0.4s;
+    z-index: 6;
+    rotate: -30deg;
+}
+.arrow-bar2 {
+    position: relative;
+    width: 20px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+    z-index: 6;
+    rotate: 30deg
+}
+.change .arrow-bar1 {
+    background-color: lightslategray;
+    /*width: 30px;*/
+    transform: rotate(60deg);
+    opacity: 1;
+}
+.change .arrow-bar2 {
+    background-color: lightslategray;
+    /*width: 30px;*/
+    transform: rotate(-60deg);
+}
+.change .arrow-menu {
+    /*left: 100px;*/
+    opacity: 0;
+    transform: rotate(180deg);
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{city}} Weather Forecast</title>
+</head>
+<body>
+  <link rel="stylesheet" type="text/css" href="/static/css/city-tables.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/icons.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <header>
+    <nav>
+      <div class="hamburger-menu" onclick="toggleHamburgerMenu(this)">
+        <div class="ham-bar1"></div>
+        <div class="ham-bar2"></div>
+        <div class="ham-bar3"></div>
+        <div class="sidebar" id="hamburger-menu">
+          <a class="sidebar-item" href="/">Home</a>
+          <a class="sidebar-item"><i class='fas fa-chevron-right'></i>Tables</a>
+          <a class="sidebar-item"><i class='fas fa-chevron-right'></i>Visualizations</a>
+          <div class="sidebar-submenu" id="sub-menu-tables"></div>
+          <div class="sidebar-submenu" id="sub-menu-visuals"></div>
+        </div>
+      </div>
+    </nav>
+    <h1 class="pg-title">{{city}} Weather Forecast</h1>
+  </header>
+  <main>
+    <section>
+      <div class="arrow-menu" id="arrow-menu-btn" onclick="toggleArrowMenu(this)">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="filter-bar" id="arrow-menu">
+        <h3>General Settings</h3>
+
+        <h3>Filter Settings</h3>
+      </div>
+    </section>
+    <div class="main-box-grid-area" id="data-content">
+      <section class="main-box-grid-area-top">
+        <section class="forecast-button-box">
+          <div class="forecast-buttons">
+            <button class="forecast-button-box-button" id="fc-btn-1" onclick="populateTable(daily_json, table_names[0])">Daily</button>
+            <button class="forecast-button-box-button" id="fc-btn-2" onclick="populateTable(hourly_json, table_names[1])">Hourly</button>
+            <button class="forecast-button-box-button" id="fc-btn-3" onclick="populateTable(astro_json, table_names[2])">Astro</button>
+          </div>
+        </section>
+        <section class="main-box-grid-area-title" id="main-box-header">
+          {{city}} Daily forecast - 3 Day
+        </section>
+        <section></section>
+        <section class="day-buttons" id="day-btns">
+          <button class="day-button-box-button" id="day-btn-1" value={{request_api.location.city}}.Monday>Monday</button>
+          <button class="day-button-box-button" id="day-btn-2" value={{request_api.location.city}}.Tuesday>Tuesday</button>
+          <button class="day-button-box-button" id="day-btn-3" value={{request_api.location.city}}.Wednesday>Wednesday</button>
+          <button class="day-button-box-button" id="day-btn-4" value={{request_api.location.city}}.Thursday>Thursday</button>
+          <button class="day-button-box-button" id="day-btn-5" value={{request_api.location.city}}.Friday>Friday</button>
+          <button class="day-button-box-button" id="day-btn-6" value={{request_api.location.city}}.Saturday>Saturday</button>
+          <button class="day-button-box-button" id="day-btn-7" value={{request_api.location.city}}.Sunday>Sunday</button>
+        </section>
+        <button class="refresh-button" id="reset-btn">Refresh</button>
+      </section>
+      <section class="main-box-grid-area-body">
+        <section class="forecast-button-box-content" id="fc-1">
+          <table class="table" id="daily-table"></table>
+        </section>
+        <section class="forecast-button-box-content" id="fc-2">
+          <div class="table-container">
+            <table class="table" id="hourly-table"></table>
+          </div>
+        </section>
+          <section class="forecast-button-box-content" id="fc-3">
+            <table class="table" id="astro-table"></table>
+          </section>
+        </section>
+    </div>
+  </main>
+  <footer>
+    <p style="text-align: center"><strong>General Information for {{city}} {{request_api.location.region}}, {{request_api.location.country}}</strong></p>
+    <div class="footer-box">
+      <span><strong>Timezone:</strong> {{request_api.location.timezone}}</span>
+      <span><strong>Longitude:</strong> {{request_api.location.longitude}}</span>
+      <span><strong>Latitude:</strong> {{request_api.location.latitude}}</span>
+      <span id="update-time2"><strong>Last Updated:</strong> {{request_api.location.localtime.split(' ')[1]}}</span>
+    </div>
+    </footer>
+</body>
+<script src="/static/js/sidebar.js"></script>
+<script src="/static/js/tab_box.js"></script>
+<script src="/static/js/filter_by_day.js"></script>
+<script src="/static/js/city_scripts.js"></script>
+<script src="/static/js/populate_tables.js"></script>
+<script src="/static/js/listeners.js"></script>
+<script>
+  var city = "{{city}}";
+  var hourly_json = "{{hjson}}";
+  var daily_json = "{{djson}}";
+  var astro_json = "{{ajson}}";
+  var table_names = ["daily-table", "hourly-table", "astro-table"];
+</script>
+</html>
